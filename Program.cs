@@ -1,8 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Formats.Asn1;
 
-// List<string> result = new List<string>();
-for (int i = 1; i <= 256; i++)
+Console.WriteLine("Please enter the Maximum range for the Number");
+var maxValue = int.Parse(Console.ReadLine() ?? "");
+Console.WriteLine($"Printing the numbers upto {maxValue}!");
+for (int i = 1; i <= maxValue; i++)
 {
     string three = "Fizz",
         five = "Buzz",
@@ -43,7 +45,8 @@ for (int i = 1; i <= 256; i++)
     }
     if (i % 17 == 0)
     {
-        Output = Output.Substring(4) + Output.Substring(0, 4);
+        if (Output != "")
+            Output = Output.Substring(4) + Output.Substring(0, 4);
     }
     if (Output == "")
     {
