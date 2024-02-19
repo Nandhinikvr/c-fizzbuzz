@@ -4,6 +4,7 @@ using System.Formats.Asn1;
 Console.WriteLine("Please enter the Maximum range for the Number");
 var maxValue = int.Parse(Console.ReadLine() ?? "");
 Console.WriteLine($"Printing the numbers upto {maxValue}!");
+List<string> output = new List<string>();
 for (int i = 1; i <= maxValue; i++)
 {
     string three = "Fizz",
@@ -11,47 +12,67 @@ for (int i = 1; i <= maxValue; i++)
         seven = "Bang",
         thirteen = "Fezz",
         eleven = "Bong";
-    string Output = "";
+    //string Output = "";
+    output.Clear();
     bool elevenMultiple = false;
     string[] reverseString = [];
     if (i % 3 == 0)
     {
-        Output += three;
+        output.Add(three);
+        // Output += three;
     }
     if (i % 13 == 0)
     {
-        Output += thirteen;
+        output.Add(thirteen);
+        //  Output += thirteen;
         elevenMultiple = true;
     }
     if (i % 5 == 0)
     {
-        Output += five;
+        output.Add(five);
+        // Output += five;
     }
     if (i % 7 == 0)
     {
-        Output += seven;
+        output.Add(seven);
+        //Output += seven;
     }
     if (i % 11 == 0)
     {
         if (elevenMultiple)
         {
-            Output += eleven;
+            output.Add(eleven);
+            // Output += eleven;
         }
         else
         {
-            Output = "";
-            Output += eleven;
+            output.Clear();
+            output.Add(eleven);
+            //Output="";
+            //Output += eleven;
         }
     }
-    if (i % 17 == 0)
+    // if (i % 17 == 0)
+    // {
+    //     if (Output != "")
+    //         Output = Output.Substring(4) + Output.Substring(0, 4);
+    // }
+    // if (Output == "")
+    // {
+    //     Output += Convert.ToString(i);
+    // }
+    if (i % 17 == 0 && output.Count > 1)
     {
-        if (Output != "")
-            Output = Output.Substring(4) + Output.Substring(0, 4);
+        output.Reverse();
     }
-    if (Output == "")
+    if (output.Count == 0)
     {
-        Output += Convert.ToString(i);
+        Console.WriteLine(i);
+    }
+    else
+    {
+        Console.WriteLine(string.Join("", output));
     }
 
-    Console.WriteLine(Output);
+    // Console.WriteLine(Output);
 }
